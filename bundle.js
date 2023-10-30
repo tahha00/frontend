@@ -23,9 +23,14 @@ function addFruit(fruit) {
         console.log("Invalid fruit")
     } else {
     const li = document.createElement("li") //*creates element - li item in this example.
+    li.addEventListener("click", removeFruit, {once:true}) //* event listener for clicking on any list item.
     li.textContent = fruit
     fruitList.appendChild(li) //* adds item to dom - so adds it to list.
 }
+}
+
+function removeFruit(e) {
+    e.target.remove()
 }
 
 
