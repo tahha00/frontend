@@ -1,21 +1,32 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const fruitForm = document.querySelector("#inputSection form")
-console.log(fruitForm)
+const fruitForm = document.querySelector("#inputSection form"); //* access to form
+// console.log(fruitForm)
 
+fruitForm.addEventListener("submit", extractFruit); //* add event listener to form
 
-const tahha = require("./script2")
-require("./script3")
+function extractFruit(e) {
+  e.preventDefault(); //* stops page from refreshing
+  //console.log(e);
+  //console.log(e.target[0].value);
+  addFruit(e.target[0].value)
+  e.target[0].value = "" //* clears form
+  //console.log(e.target.fruitInput.value)
+}
 
-console.log(tahha);
+//const tahha = require("./script2");
+//require("./script3");
+//console.log(tahha);
 
-},{"./script2":2,"./script3":3}],2:[function(require,module,exports){
-const x = "tahha"
-
-module.exports = x
-
-},{}],3:[function(require,module,exports){
-console.log("hit")
-
+const fruitList = document.querySelector("#fruitSection ul")
+function addFruit(fruit) {
+    if(!fruit) {
+        console.log("Invalid fruit")
+    } else {
+    const li = document.createElement("li") //*creates element - li item in this example.
+    li.textContent = fruit
+    fruitList.appendChild(li) //* adds item to dom - so adds it to list.
+}
+}
 
 
 },{}]},{},[1]);
